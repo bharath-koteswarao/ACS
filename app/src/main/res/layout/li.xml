@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:text="Import file"
             android:layout_weight="1"
-            android:textColor="@android:color/background_dark"
             android:textStyle="bold"
             />
         <TextView

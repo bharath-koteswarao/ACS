@@ -14,7 +14,7 @@ public class Data {
     {
         for(int i=0;i<sample.length;i++)
         {
-            ListItem listItem=new ListItem(sample[i],(i+1)+"");
+            ListItem listItem=new ListItem(sample[i],(i+1)+""); //Fixed crash
             list.add(listItem);
         }
         return list;

@@ -7,7 +7,7 @@ package bk.acs.RecyclerView;
 public class ListItem {
     String subName;
     String sno;
-    public ListItem(String subName, String sno)
+    public ListItem(String subName, String sno)//int to string stopped from crashing
     {
         this.subName=subName;
         this.sno=sno;

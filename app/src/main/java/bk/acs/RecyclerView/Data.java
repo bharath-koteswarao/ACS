@@ -14,7 +14,8 @@ public class Data {
     {
         for(int i=0;i<sample.length;i++)
         {
-            list.add(new ListItem(sample[i],(i+1)));
+            ListItem listItem=new ListItem(sample[i],(i+1)+"");
+            list.add(listItem);
         }
         return list;
     }

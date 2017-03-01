@@ -6,8 +6,8 @@ package bk.acs.RecyclerView;
 
 public class ListItem {
     String subName;
-    int sno;
-    public ListItem(String subName, int sno)
+    String sno;
+    public ListItem(String subName, String sno)
     {
         this.subName=subName;
         this.sno=sno;

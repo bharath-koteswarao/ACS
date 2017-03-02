@@ -3,8 +3,9 @@ package bk.acs.AddingToDatabase;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import bk.acs.R;
+import bk.acs.databases.Main;
 
 /**
  * Created by koteswarao on 27-02-2017.
@@ -20,6 +22,7 @@ import bk.acs.R;
 public class MyDialog extends DialogFragment {
     View v;
     EditText et1,et2;
+    ContentValues contentValues=new ContentValues();
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
@@ -32,7 +35,12 @@ public class MyDialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 final String subname=et1.getText().toString(),fname=et2.getText().toString();
-                Toast.makeText(getActivity(), subname+"\n"+fname, Toast.LENGTH_SHORT).show();
+                Main main=new Main(getActivity(),"subjects_db",1,1);
+                contentValues.put("SubjectName",subname);
+                contentValues.put("FileName",fname);
+                SQLiteDatabase db=main.getWritableDatabase();
+                long res=db.insert("subjectsTable",null,contentValues);
+                Toast.makeText(getActivity(), "Number of subjects ="+res, Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override

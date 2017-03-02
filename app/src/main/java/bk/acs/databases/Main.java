@@ -23,7 +23,7 @@ public class Main extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createQry="CREATE TABLE SubjectsList(_id INTEGER PRIMARY KEY AUTOINCREMENT , SubjectName VARCHAR(100) , FileName VARCHAR(100));";
+        String createQry="CREATE TABLE SubjectsTable(_id INTEGER PRIMARY KEY AUTOINCREMENT , SubjectName VARCHAR(100) , FileName VARCHAR(100));";
         sqLiteDatabase.execSQL(createQry);
     }
 

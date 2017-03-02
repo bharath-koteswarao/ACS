@@ -1,2 +1,1 @@
-# ACS
-Simple Attendance app
+<b>ACS class Attendance </b>

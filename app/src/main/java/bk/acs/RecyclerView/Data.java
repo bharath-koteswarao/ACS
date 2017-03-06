@@ -20,10 +20,12 @@ public class Data {
     public static List<ListItem> list=new ArrayList<>();
     String[] cols={"SubjectName"};
     SQLiteDatabase db;
+    Context ctx;
     public Data(Context context)
     {
+        this.ctx=context;
         Main main=new Main(context,"subjects_db",1,1);
-        db=main.getReadableDatabase();
+        db=main.getWritableDatabase();
         Cursor cursor=db.query("SubjectsTable",cols,null,null,null,null,null);
         while(cursor.moveToNext())
         {
@@ -32,6 +34,7 @@ public class Data {
     }
     public static List getList()
     {
+
         for(int i=0;i<sample.size();i++)
         {
             ListItem listItem=new ListItem(sample.get(i),(i+1)+""); //Fixed crash

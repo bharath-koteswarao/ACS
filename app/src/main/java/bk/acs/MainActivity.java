@@ -1,4 +1,5 @@
 package bk.acs;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import bk.acs.AddingToDatabase.MyDialog;
 import bk.acs.RecyclerView.Data;
 import bk.acs.RecyclerView.MyAdapter;
+import bk.acs.databases.Main;
 
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
@@ -26,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show(getFragmentManager(),"myDialog");
             }
         });
+        Data d=new Data(this);
         recview=(RecyclerView)findViewById(R.id.recview);
-        adapter=new MyAdapter(Data.getList(),this);
+        adapter=new MyAdapter(d.getList(),this);
         recview.setLayoutManager(new LinearLayoutManager(recview.getContext()));
         recview.setAdapter(adapter);
-        Data d=new Data(this);
     }
 }

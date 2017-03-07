@@ -4,10 +4,9 @@
     android:layout_width="match_parent"
     android:id="@+id/cont_root"
     android:layout_height="wrap_content"
+    android:clickable="true"
     android:layout_marginBottom="5dp"
     >
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

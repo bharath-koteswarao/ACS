@@ -9,9 +9,10 @@
         android:layout_height="wrap_content"
         android:text="15BEC0584"
         android:textSize="25dp"
+        android:textColor="#fff"
         android:id="@+id/regNo"
         android:gravity="center"
         android:padding="10dp"
-        android:background="@android:color/white"
+        android:background="#B2FF59"
         />
 </LinearLayout>

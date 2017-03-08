@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.MyAdapter2;
+import bk.acs.RecyclerView3.Data3;
+import bk.acs.RecyclerView3.MyAdapter3;
 import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator;
 
 import static bk.acs.R.styleable.View;
@@ -28,19 +30,16 @@ public class SubActivity1 extends AppCompatActivity {
         recyclerView2.setLayoutManager(new LinearLayoutManager(recyclerView2.getContext()));
         recyclerView3.setLayoutManager(new LinearLayoutManager(recyclerView3.getContext()));
         Data2 data2=new Data2(this);
+        Data3 data3=new Data3(this);
         MyAdapter2 adapter2=new MyAdapter2(data2.getList(),this);
+        MyAdapter3 adapter3=new MyAdapter3(data3.getList(),this);
         recyclerView2.setAdapter(adapter2);
-        recyclerView3.setAdapter(adapter2);
+        recyclerView3.setAdapter(adapter3);
         String name=getIntent().getExtras().getString("tv");
         subNameHeader.setText(name);
     }
     public void setPresentCount(View view)
     {
 
-        presentCount.setText("hello");
     }
-//    public void setAbsentCount(String count)
-//    {
-//        absentCount.setText("ABSENT = "+count);
-//    }
 }

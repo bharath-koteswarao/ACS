@@ -1,7 +1,6 @@
 package bk.acs.RecyclerView2;
 
 import android.content.Context;
-
 import java.util.ArrayList;
 import java.util.List;
 

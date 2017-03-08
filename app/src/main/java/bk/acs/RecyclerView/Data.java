@@ -25,7 +25,7 @@ public class Data {
     {
         this.ctx=context;
         Main main=new Main(context,"subjects_db",1,1);
-        db=main.getWritableDatabase();
+        db=main.getReadableDatabase();
         Cursor cursor=db.query("SubjectsTable",cols,null,null,null,null,null);
         while(cursor.moveToNext())
         {

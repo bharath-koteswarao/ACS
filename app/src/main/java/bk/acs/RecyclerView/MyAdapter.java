@@ -23,13 +23,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder>{
     List<ListItem> listdata;
     LayoutInflater inflater;
     Context c;
-
     public MyAdapter(List<ListItem> list, Context c)
     {
         this.inflater=LayoutInflater.from(c);
         listdata=list;
-        notifyDataSetChanged();
-        Log.d("See this",listdata.size()+"");
         this.c=c;
     }
     @Override

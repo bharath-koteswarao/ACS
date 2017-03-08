@@ -40,8 +40,6 @@ public class MyDialog extends DialogFragment {
                 contentValues.put("FileName",fname);
                 SQLiteDatabase db=main.getWritableDatabase();
                 long res=db.insert("subjectsTable",null,contentValues);
-                Data d=new Data(getActivity());
-                MyAdapter adapter=new MyAdapter(d.getList(),getActivity());
                 Toast.makeText(getActivity(), "Number of subjects ="+res, Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

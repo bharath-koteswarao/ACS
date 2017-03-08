@@ -5,4 +5,9 @@ package bk.acs.RecyclerView2;
  */
 
 public class ListItem2 {
+    String regno;
+    public ListItem2(String regno)
+    {
+        this.regno=regno;
+    }
 }

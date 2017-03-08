@@ -2,10 +2,16 @@ package bk.acs;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import bk.acs.AddingToDatabase.MyDialog;
 import bk.acs.RecyclerView.Data;
 import bk.acs.RecyclerView.MyAdapter;
@@ -14,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     RecyclerView recview;
     MyAdapter adapter;
+    Data d;
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +36,28 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show(getFragmentManager(),"myDialog");
             }
         });
-        Data d=new Data(this);
+        d=new Data(this);
         recview=(RecyclerView)findViewById(R.id.recview);
         adapter=new MyAdapter(d.getList(),this);
         recview.setLayoutManager(new LinearLayoutManager(recview.getContext()));
         recview.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int res_id=item.getItemId();
+        if(res_id==R.id.refresh)
+        {
+            adapter.notifyDataSetChanged();
+            //adapter.notifyItemInserted(d.getList().size());
+        }
+        return true;
     }
 }

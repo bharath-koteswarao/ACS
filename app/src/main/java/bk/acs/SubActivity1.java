@@ -2,22 +2,27 @@ package bk.acs;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.MyAdapter2;
 import bk.acs.RecyclerView3.Data3;
 import bk.acs.RecyclerView3.MyAdapter3;
 import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
 import static bk.acs.R.styleable.View;
 
 public class SubActivity1 extends AppCompatActivity {
     TextView subNameHeader,presentCount,absentCount;
     RecyclerView recyclerView2,recyclerView3;
+    MyAdapter3 adapter3;
+    MyAdapter2 adapter2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +36,33 @@ public class SubActivity1 extends AppCompatActivity {
         recyclerView3.setLayoutManager(new LinearLayoutManager(recyclerView3.getContext()));
         Data2 data2=new Data2(this);
         Data3 data3=new Data3(this);
-        MyAdapter2 adapter2=new MyAdapter2(data2.getList(),this);
-        MyAdapter3 adapter3=new MyAdapter3(data3.getList(),this);
+        adapter2=new MyAdapter2(data2.getList(),this);
+        adapter3=new MyAdapter3(data3.getList(),this);
+        presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
+        absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
         recyclerView2.setAdapter(adapter2);
         recyclerView3.setAdapter(adapter3);
         String name=getIntent().getExtras().getString("tv");
         subNameHeader.setText(name);
+        DefaultItemAnimator animator=new DefaultItemAnimator();
+        animator.setRemoveDuration(200);
+        animator.setAddDuration(200);
+        recyclerView2.setItemAnimator(animator);
     }
     public void setPresentCount(View view)
     {
 
+    }
+    public void onClickForAbsent(int position)
+    {
+        adapter3.listdata3.remove(position);
+        adapter3.notifyItemRemoved(position);
+        absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
+    }
+    public void onClickForPresent(int position)
+    {
+        adapter2.listdata2.remove(position);
+        adapter2.notifyItemRemoved(position);
+        presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
     }
 }

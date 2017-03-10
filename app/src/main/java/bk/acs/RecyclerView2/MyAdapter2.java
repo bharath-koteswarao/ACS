@@ -15,7 +15,7 @@ import bk.acs.SubActivity1;
  */
 
 public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder>{
-    List<ListItem2> listdata2;
+    public List<ListItem2> listdata2;
     LayoutInflater layoutInflater;
     Context c;
     SubActivity1 activity1=new SubActivity1();
@@ -55,9 +55,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder>{
 
         @Override
         public void onClick(View view) {
-            listdata2.remove(getPosition());
-            notifyItemRemoved(getPosition());
-            //activity1.setAbsentCount(listdata2.size()+"");
+            ((SubActivity1)c).onClickForPresent(getPosition());
         }
     }
 }

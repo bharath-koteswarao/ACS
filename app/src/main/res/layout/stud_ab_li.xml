@@ -13,7 +13,7 @@
         android:background="@android:color/white"
         android:padding="5dp"
         android:layout_weight="0.9"
-        android:textColor="#64DD17"
+        android:textColor="#F44336"
         />
     <TextView
         android:layout_width="match_parent"

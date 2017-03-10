@@ -10,8 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import bk.acs.RecyclerView2.Data2;
+import bk.acs.RecyclerView2.ListItem2;
 import bk.acs.RecyclerView2.MyAdapter2;
 import bk.acs.RecyclerView3.Data3;
+import bk.acs.RecyclerView3.ListItem3;
 import bk.acs.RecyclerView3.MyAdapter3;
 import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
@@ -53,16 +55,22 @@ public class SubActivity1 extends AppCompatActivity {
     {
 
     }
-    public void onClickForAbsent(int position)
+    public void onClickForAbsent(int position, ListItem3 item3)
     {
         adapter3.listdata3.remove(position);
         adapter3.notifyItemRemoved(position);
+        adapter2.listdata2.add(adapter2.listdata2.size(),(new ListItem2(item3.regNo)));
+        adapter2.notifyItemInserted(adapter2.listdata2.size());
+        presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
         absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
     }
-    public void onClickForPresent(int position)
+    public void onClickForPresent(int position, ListItem2 item2)
     {
         adapter2.listdata2.remove(position);
         adapter2.notifyItemRemoved(position);
+        adapter3.listdata3.add(new ListItem3(item2.regno));
+        adapter3.notifyItemInserted(adapter3.listdata3.size());
         presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
+        absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
     }
 }

@@ -5,7 +5,7 @@ package bk.acs.RecyclerView3;
  */
 
 public class ListItem3 {
-    String regNo;
+    public String regNo;
     public ListItem3(String regNo)
     {
         this.regNo=regNo;

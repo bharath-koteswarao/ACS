@@ -56,7 +56,7 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.Holder> {
         }
         @Override
         public void onClick(View view) {
-            ((SubActivity1)context).onClickForAbsent(getPosition());
+            ((SubActivity1)context).onClickForAbsent(getPosition(), listdata3.get(getPosition()));
         }
     }
 }

@@ -17,10 +17,6 @@ public class Data3 {
     }
     public List getList()
     {
-        for(int i=0;i<20;i++)
-        {
-            list.add(new ListItem3("15BEC05"+i));
-        }
         return list;
     }
 }

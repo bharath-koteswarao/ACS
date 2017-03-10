@@ -20,7 +20,7 @@ import bk.acs.SubActivity1;
  */
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder>{
-    List<ListItem> listdata;
+    public List<ListItem> listdata;
     LayoutInflater inflater;
     Context c;
     public MyAdapter(List<ListItem> list, Context c)

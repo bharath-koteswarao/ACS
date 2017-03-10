@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import bk.acs.MainActivity;
 import bk.acs.R;
 import bk.acs.RecyclerView.Data;
 import bk.acs.RecyclerView.MyAdapter;
@@ -40,6 +42,7 @@ public class MyDialog extends DialogFragment {
                 contentValues.put("FileName",fname);
                 SQLiteDatabase db=main.getWritableDatabase();
                 long res=db.insert("subjectsTable",null,contentValues);
+                ((MainActivity)getActivity()).updateRecView(res,subname);
                 Toast.makeText(getActivity(), "Number of subjects ="+res, Toast.LENGTH_SHORT).show();
             }
         }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

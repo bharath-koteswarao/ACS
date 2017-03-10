@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import bk.acs.AddingToDatabase.MyDialog;
 import bk.acs.RecyclerView.Data;
+import bk.acs.RecyclerView.ListItem;
 import bk.acs.RecyclerView.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,8 +57,12 @@ public class MainActivity extends AppCompatActivity {
         if(res_id==R.id.refresh)
         {
             adapter.notifyDataSetChanged();
-            //adapter.notifyItemInserted(d.getList().size());
         }
         return true;
+    }
+    public void updateRecView(long num, String subname)
+    {
+        adapter.listdata.add(new ListItem(subname,num+""));
+        adapter.notifyItemInserted(adapter.listdata.size());
     }
 }

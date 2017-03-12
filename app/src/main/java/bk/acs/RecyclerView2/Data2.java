@@ -19,7 +19,7 @@ public class Data2 {
     {
         for(int i=0;i<20;i++)
         {
-            list.add(new ListItem2("15BEC05"+i));
+            list.add(new ListItem2(("15BEC05"+i),0));
         }
         return list;
     }

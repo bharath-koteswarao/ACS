@@ -1,6 +1,7 @@
 package bk.acs.RecyclerView2;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,9 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder>{
     public void onBindViewHolder(Holder holder, int position) {
         ListItem2 item=listdata2.get(position);
         holder.studentNo.setText(item.regno);
+        if(item.color>0){
+            holder.studentNo.setTextColor(Color.parseColor("#536DFE"));
+        }
     }
 
     @Override

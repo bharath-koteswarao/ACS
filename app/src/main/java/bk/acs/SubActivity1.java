@@ -76,7 +76,7 @@ public class SubActivity1 extends AppCompatActivity {
     {
         adapter3.listdata3.remove(position);
         adapter3.notifyItemRemoved(position);
-        adapter2.listdata2.add(adapter2.listdata2.size(),(new ListItem2(item3.regNo)));
+        adapter2.listdata2.add(adapter2.listdata2.size(),(new ListItem2(item3.regNo,1)));
         adapter2.notifyItemInserted(adapter2.listdata2.size());
         presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
         absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");

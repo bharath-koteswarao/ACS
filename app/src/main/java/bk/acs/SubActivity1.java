@@ -1,13 +1,23 @@
 package bk.acs;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.ListItem2;
@@ -18,13 +28,17 @@ import bk.acs.RecyclerView3.MyAdapter3;
 import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
+import static android.os.Environment.getExternalStorageDirectory;
+import static android.os.Environment.getExternalStoragePublicDirectory;
 import static bk.acs.R.styleable.View;
 
 public class SubActivity1 extends AppCompatActivity {
     TextView subNameHeader,presentCount,absentCount;
     RecyclerView recyclerView2,recyclerView3;
     MyAdapter3 adapter3;
+    String tag="See this";
     MyAdapter2 adapter2;
+    boolean res;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +65,12 @@ public class SubActivity1 extends AppCompatActivity {
         animator.setAddDuration(200);
         recyclerView2.setItemAnimator(animator);
     }
-    public void setPresentCount(View view)
-    {
-
+    public void createFile(View view) throws IOException {
+        String path=Environment.getExternalStorageDirectory().getAbsolutePath()+"/bk.txt";
+        File f=new File(path);
+        Log.d(tag,f.exists()+"");
+        Log.d(tag,f.isDirectory()+"");
+        Log.d(tag,f.createNewFile()+"");
     }
     public void onClickForAbsent(int position, ListItem3 item3)
     {

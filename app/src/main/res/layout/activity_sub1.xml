@@ -94,7 +94,7 @@
             android:background="@color/colorPrimaryDark"
             android:textColor="@android:color/white"
             android:id="@+id/submit"
-            android:onClick="setPresentCount"
+            android:onClick="createFile"
             android:text="SUBMIT"/>
     </LinearLayout>
 </LinearLayout>

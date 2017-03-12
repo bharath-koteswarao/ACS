@@ -1,5 +1,6 @@
 package bk.acs;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         d=new Data(this);
+        Log.d("See this",Environment.getExternalStorageState());
         recview=(RecyclerView)findViewById(R.id.recview);
         drawer=(NavigationDrawer)getSupportFragmentManager().findFragmentById(R.id.navDrawer);
         drawer.setUp((DrawerLayout)findViewById(R.id.drawer_layout),toolbar);

@@ -44,9 +44,15 @@
         android:layout_height="2dp"
         android:background="@android:color/black" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/note"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -75,6 +81,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/help"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -103,6 +110,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/settings"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -132,6 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:id="@+id/rate"
         android:padding="10dp">
 
         <ImageView

@@ -1,42 +1,29 @@
 package bk.acs;
-import android.os.Bundle;
-import android.os.Environment;
+
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import bk.acs.AddingToDatabase.MyDialog;
-import bk.acs.RecyclerView.Data;
-import bk.acs.RecyclerView.ListItem;
-import bk.acs.RecyclerView.MyAdapter;
 
-public class MainActivity extends AppCompatActivity {
-    RecyclerView recview;
-    MyAdapter adapter;
-    Data d;
+import bk.acs.AddingToDatabase.MyDialog;
+
+public class Note extends AppCompatActivity {
+
     Toolbar toolbar;
     NavigationDrawer drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_note);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        d=new Data(this);
-        recview=(RecyclerView)findViewById(R.id.recview);
-        drawer=(NavigationDrawer)getSupportFragmentManager().findFragmentById(R.id.navDrawer);
+        drawer=(NavigationDrawer)getSupportFragmentManager().findFragmentById(R.id.navDrawerNote);
         drawer.setUp((DrawerLayout)findViewById(R.id.drawer_layout),toolbar);
-        adapter=new MyAdapter(d.getList(),this);
-        recview.setLayoutManager(new LinearLayoutManager(recview.getContext()));
-        recview.setAdapter(adapter);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
@@ -53,10 +40,5 @@ public class MainActivity extends AppCompatActivity {
             dialog.show(getFragmentManager(),"myDialog");
         }
         return true;
-    }
-    public void updateRecView(long num, String subname)
-    {
-        adapter.listdata.add(new ListItem(subname,num+""));
-        adapter.notifyItemInserted(adapter.listdata.size());
     }
 }

@@ -3,98 +3,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sub1"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="bk.acs.SubActivity1">
+
     <TextView
+        android:id="@+id/subNameHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="13dp"
-        android:id="@+id/subNameHeader"
         android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
+        android:padding="13dp"
+        android:text="SUBJECT NAME"
         android:textAlignment="center"
-        android:text="SUBJECT NAME"/>
+        android:textColor="@android:color/white" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5">
+
             <TextView
+                android:id="@+id/presentCount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:id="@+id/presentCount"
-                android:textColor="@color/colorPrimaryDark"
                 android:text="PRESENT = 10"
-                />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="1dp"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary"
+            android:padding="1dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5">
+
             <TextView
+                android:id="@+id/absentCount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/colorPrimaryDark"
-                android:textAlignment="center"
-                android:id="@+id/absentCount"
                 android:text="ABSENT = 10"
-                />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:gravity="center"
         android:layout_weight="0.8"
         android:background="#d3d3d3"
-        >
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp">
+
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recview2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:id="@+id/recview2"
-            >
-        </android.support.v7.widget.RecyclerView>
+            android:layout_weight="0.5"></android.support.v7.widget.RecyclerView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="1dp"
             android:background="@color/colorPrimary"
-            />
+            android:padding="1dp" />
+
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recview3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recview3"
-            android:layout_weight="0.5"
-            >
+            android:layout_weight="0.5">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/white"
-            android:id="@+id/submit"
             android:onClick="createFile"
-            android:text="SUBMIT"/>
+            android:text="SUBMIT"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

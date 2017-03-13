@@ -19,9 +19,10 @@ import android.widget.Toast;
  * A simple {@link Fragment} subclass.
  */
 public class NavigationDrawer extends Fragment {
-    LinearLayout note,help,settings,rate,home;
+    LinearLayout note, help, settings, rate, home;
     ActionBarDrawerToggle drawertoggle;
     DrawerLayout drawerlayout;
+
     public NavigationDrawer() {
     }
 
@@ -30,17 +31,17 @@ public class NavigationDrawer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        note=(LinearLayout)v.findViewById(R.id.note);
-        help=(LinearLayout)v.findViewById(R.id.help);
-        settings=(LinearLayout)v.findViewById(R.id.settings);
-        rate=(LinearLayout)v.findViewById(R.id.rate);
+        View v = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        note = (LinearLayout) v.findViewById(R.id.note);
+        help = (LinearLayout) v.findViewById(R.id.help);
+        settings = (LinearLayout) v.findViewById(R.id.settings);
+        rate = (LinearLayout) v.findViewById(R.id.rate);
         return v;
     }
 
     public void setUp(DrawerLayout drawerlayout, Toolbar toolbar) {
-        this.drawerlayout=drawerlayout;
-        drawertoggle=new ActionBarDrawerToggle(getActivity(),drawerlayout,toolbar,R.string.drawer_open,R.string.drawer_close){
+        this.drawerlayout = drawerlayout;
+        drawertoggle = new ActionBarDrawerToggle(getActivity(), drawerlayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -63,25 +64,25 @@ public class NavigationDrawer extends Fragment {
         note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),Note.class));
+                startActivity(new Intent(getActivity(), Note.class));
             }
         });
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),Rate.class));
+                startActivity(new Intent(getActivity(), Rate.class));
             }
         });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),Settings.class));
+                startActivity(new Intent(getActivity(), Settings.class));
             }
         });
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),Help.class));
+                startActivity(new Intent(getActivity(), Help.class));
             }
         });
     }

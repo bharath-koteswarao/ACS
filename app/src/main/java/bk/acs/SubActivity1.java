@@ -68,11 +68,7 @@ public class SubActivity1 extends AppCompatActivity {
         recyclerView2.setItemAnimator(animator);
     }
     public void createFile(View view) throws IOException {
-        File f=new File(getExternalFilesDir(null),"BkFolder");
-        res=f.mkdir();
-        File f2=new File(f,"Input");
-        boolean res2=f2.mkdir();
-        Log.d(tag,res+"  "+res2+"");
+
     }
     public void onClickForAbsent(int position, ListItem3 item3)
     {

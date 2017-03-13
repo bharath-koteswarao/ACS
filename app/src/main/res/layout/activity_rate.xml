@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_rate"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="bk.acs.Rate">
+
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="#FF9800">
-    </android.support.v7.widget.Toolbar>
+        android:background="#FF9800"></android.support.v7.widget.Toolbar>
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="COMING SOON..."
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="COMING SOON..." />
+
         <fragment
             android:id="@+id/navDrawerRate"
             android:name="bk.acs.NavigationDrawer"

@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     android:id="@+id/cont_root"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="3dp"
     android:clickable="true"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/sub_li"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:id="@+id/sub_li"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2.6"
-            >
+            android:layout_weight="2.6">
+
             <TextView
+                android:id="@+id/sno"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="S.NO"
-                android:textColor="@android:color/white"
-                android:gravity="center"
-                android:id="@+id/sno"
-                android:padding="15dp"
                 android:background="@android:color/holo_blue_dark"
-                />
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="S.NO"
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
-                android:layout_width="match_parent"
-                android:padding="30dp"
-                android:gravity="center"
-                android:textColor="@android:color/black"
                 android:id="@+id/subjectTitle"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="30dp"
                 android:text="SUBJECT NAME"
-                />
+                android:textColor="@android:color/black" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

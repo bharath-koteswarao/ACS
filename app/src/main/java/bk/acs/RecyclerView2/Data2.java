@@ -1,6 +1,13 @@
 package bk.acs.RecyclerView2;
 
 import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +18,12 @@ import java.util.List;
 public class Data2 {
     Context context;
     public List<ListItem2> list=new ArrayList<>();
+    int count;
     public Data2(Context ctx)
     {
         context=ctx;
     }
-    public List getList()
-    {
+    public List getList() {
         for(int i=0;i<20;i++)
         {
             list.add(new ListItem2(("15BEC05"+i),0));

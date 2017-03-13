@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">ACS</string>
+    <string name="app_name">ATTENDANCE CSV</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="here"><u>HERE</u></string>
 </resources>

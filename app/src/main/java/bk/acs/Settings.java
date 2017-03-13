@@ -14,30 +14,31 @@ public class Settings extends AppCompatActivity {
 
     Toolbar toolbar;
     NavigationDrawer drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        drawer=(NavigationDrawer)getSupportFragmentManager().findFragmentById(R.id.navDrawerSettings);
-        drawer.setUp((DrawerLayout)findViewById(R.id.drawer_layout),toolbar);
+        drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.navDrawerSettings);
+        drawer.setUp((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater=getMenuInflater();
-        menuInflater.inflate(R.menu.menu_main,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int res_id=item.getItemId();
-        if(res_id==R.id.refresh)
-        {
-            MyDialog dialog=new MyDialog();
-            dialog.show(getFragmentManager(),"myDialog");
+        int res_id = item.getItemId();
+        if (res_id == R.id.refresh) {
+            MyDialog dialog = new MyDialog();
+            dialog.show(getFragmentManager(), "myDialog");
         }
         return true;
     }

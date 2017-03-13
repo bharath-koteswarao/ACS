@@ -2,7 +2,9 @@ package bk.acs.RecyclerView2;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +40,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder>{
         ListItem2 item=listdata2.get(position);
         holder.studentNo.setText(item.regno);
         if(item.color>0){
-            holder.studentNo.setTextColor(Color.parseColor("#536DFE"));
+            holder.studentNo.setTextColor(Color.parseColor("#303F9F"));
         }
     }
 

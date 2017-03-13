@@ -2,6 +2,7 @@ package bk.acs;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -28,6 +29,7 @@ import bk.acs.RecyclerView3.MyAdapter3;
 import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
+import static android.os.Environment.DIRECTORY_PICTURES;
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static bk.acs.R.styleable.View;
@@ -66,11 +68,11 @@ public class SubActivity1 extends AppCompatActivity {
         recyclerView2.setItemAnimator(animator);
     }
     public void createFile(View view) throws IOException {
-        String path=Environment.getExternalStorageDirectory().getAbsolutePath()+"/bk.txt";
-        File f=new File(path);
-        Log.d(tag,f.exists()+"");
-        Log.d(tag,f.isDirectory()+"");
-        Log.d(tag,f.createNewFile()+"");
+        File f=new File(getExternalFilesDir(null),"BkFolder");
+        res=f.mkdir();
+        File f2=new File(f,"Input");
+        boolean res2=f2.mkdir();
+        Log.d(tag,res+"  "+res2+"");
     }
     public void onClickForAbsent(int position, ListItem3 item3)
     {
@@ -89,5 +91,6 @@ public class SubActivity1 extends AppCompatActivity {
         adapter3.notifyItemInserted(adapter3.listdata3.size());
         presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
         absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
+        Log.d(tag,item2.color+"");
     }
 }

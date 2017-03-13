@@ -10,6 +10,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import bk.acs.AddingToDatabase.MyDialog;
 import bk.acs.RecyclerView.Data;
 import bk.acs.RecyclerView.ListItem;
@@ -20,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter adapter;
     Data d;
     Toolbar toolbar;
+    TextView toBeDisabled1,toBeDisabled2;
+    ImageView toBeRemoved1,toBeRemoved2;
     NavigationDrawer drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         adapter=new MyAdapter(d.getList(),this);
         recview.setLayoutManager(new LinearLayoutManager(recview.getContext()));
         recview.setAdapter(adapter);
+        toBeDisabled1=(TextView)findViewById(R.id.toBeDisabledTextView1);
+        toBeDisabled2=(TextView)findViewById(R.id.toBeDisabledTextView2);
+        toBeRemoved1=(ImageView)findViewById(R.id.toBeDisabledImageView);
+        toBeRemoved2=(ImageView)findViewById(R.id.toBeDisabledImageView2);
     }
 
     @Override
@@ -56,7 +68,25 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateRecView(long num, String subname)
     {
+        toBeDisabled1=(TextView)findViewById(R.id.toBeDisabledTextView1);
+        toBeDisabled2=(TextView)findViewById(R.id.toBeDisabledTextView2);
+        toBeRemoved1=(ImageView)findViewById(R.id.toBeDisabledImageView);
+        toBeRemoved2=(ImageView)findViewById(R.id.toBeDisabledImageView2);
+        toBeDisabled1.setVisibility(View.GONE);
+        toBeDisabled2.setVisibility(View.GONE);
+        toBeRemoved1.setVisibility(View.GONE);
+        toBeRemoved2.setVisibility(View.GONE);
         adapter.listdata.add(new ListItem(subname,num+""));
         adapter.notifyItemInserted(adapter.listdata.size());
+    }
+    public void disableRecView(){
+        toBeDisabled1=(TextView)findViewById(R.id.toBeDisabledTextView1);
+        toBeDisabled2=(TextView)findViewById(R.id.toBeDisabledTextView2);
+        toBeRemoved1=(ImageView)findViewById(R.id.toBeDisabledImageView);
+        toBeRemoved2=(ImageView)findViewById(R.id.toBeDisabledImageView2);
+        toBeDisabled1.setVisibility(View.GONE);
+        toBeDisabled2.setVisibility(View.GONE);
+        toBeRemoved1.setVisibility(View.GONE);
+        toBeRemoved2.setVisibility(View.GONE);
     }
 }

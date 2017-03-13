@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import bk.acs.MainActivity;
 import bk.acs.databases.Main;
 
 /**
@@ -30,6 +31,9 @@ public class Data {
         while(cursor.moveToNext())
         {
             sample.add(cursor.getString(0));
+        }
+        if(sample.size()!=0){
+            ((MainActivity)context).disableRecView();
         }
     }
     public static List getList()

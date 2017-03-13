@@ -16,6 +16,49 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:padding="65dp"
+                android:layout_height="@dimen/nothingImageHeight"
+                android:id="@+id/toBeDisabledImageView"
+                android:src="@drawable/nothingfound"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/toBeDisabledTextView1"
+                    android:padding="10dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center"
+                    android:text="CLICK ON"
+                    />
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/toBeDisabledImageView2"
+                    android:padding="10dp"
+                    android:src="@drawable/plus"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/toBeDisabledTextView2"
+                    android:padding="9dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:text=" TO ADD NEW SUBJECTS"
+                    />
+            </LinearLayout>
+        </LinearLayout>
         <include layout="@layout/main_recyclerview" />
         <fragment
             android:id="@+id/navDrawer"

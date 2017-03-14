@@ -1,5 +1,6 @@
 package bk.acs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
@@ -34,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter adapter;
     Data d;
     Toolbar toolbar;
-    TextView toBeDisabled1, toBeDisabled2;
-    ImageView toBeRemoved1, toBeRemoved2;
     NavigationDrawer drawer;
     String appName;
     LinearLayout main;
@@ -113,5 +112,10 @@ public class MainActivity extends AppCompatActivity {
             File temp=new File(inputs,"temp.txt");
             temp.createNewFile();
         }
+    }
+    public void fetchDataForSub(String s){
+        Intent intent=new Intent(this,SubActivity1.class);
+        intent.putExtra("tv",s);
+        startActivity(intent);
     }
 }

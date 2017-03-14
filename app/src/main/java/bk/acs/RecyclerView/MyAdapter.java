@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import bk.acs.MainActivity;
 import bk.acs.R;
 import bk.acs.SubActivity1;
 
@@ -62,9 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder>{
 
         @Override
         public void onClick(View view) {
-            Intent intent=new Intent(c,SubActivity1.class);
-            intent.putExtra("tv",subjectName.getText());
-            c.startActivity(intent);
+            ((MainActivity)c).fetchDataForSub(subjectName.getText().toString());
         }
     }
 

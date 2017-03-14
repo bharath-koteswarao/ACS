@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.List;
 import bk.acs.R;
 import bk.acs.SubActivity1;
@@ -18,13 +21,14 @@ import bk.acs.SubActivity1;
  */
 
 public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder>{
-    public List<ListItem2> listdata2;
+    public List<ListItem2> listdata2,copy;
     LayoutInflater layoutInflater;
     Context c;
-    SubActivity1 activity1=new SubActivity1();
+    public ArrayList<Integer> absentList=new ArrayList<>();
     public MyAdapter2(List<ListItem2> listdata, Context ctx)
     {
         this.listdata2=listdata;
+        copy=listdata;
         c=ctx;
         this.layoutInflater=LayoutInflater.from(c);
     }
@@ -61,7 +65,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder>{
 
         @Override
         public void onClick(View view) {
-            ((SubActivity1)c).onClickForPresent(getPosition(),listdata2.get(getPosition()));
+            copy.remove(getAdapterPosition());
+            ((SubActivity1)c).submitAll(copy);
         }
     }
 }

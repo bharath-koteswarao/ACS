@@ -155,7 +155,7 @@
             android:layout_weight="0.8"
             android:gravity="left|center"
             android:paddingLeft="20dp"
-            android:text="RATE APP"
+            android:text="VIEW DETAILS"
             android:textColor="@color/colorAccent"
             android:textSize="15dp" />
     </LinearLayout>

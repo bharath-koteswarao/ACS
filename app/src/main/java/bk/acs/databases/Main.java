@@ -9,9 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class Main extends SQLiteOpenHelper {
-    String dbName;
-    Context context;
-    int newVersion,oldVersion;
+    private String dbName;
+    private Context context;
+    private int newVersion,oldVersion;
     public Main(Context context , String dbName , int newVersion , int oldVersion)
     {
         super(context , dbName , null , newVersion);

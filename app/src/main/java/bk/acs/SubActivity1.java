@@ -1,5 +1,6 @@
 package bk.acs;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +17,13 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
+
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.ListItem2;
 import bk.acs.RecyclerView2.MyAdapter2;
+import bk.acs.databases.DatesList;
+import bk.acs.databases.Main;
 
 public class SubActivity1 extends AppCompatActivity {
     TextView subNameHeader,presentCount,absentCount;
@@ -29,10 +34,12 @@ public class SubActivity1 extends AppCompatActivity {
     MyAdapter2 adapter2;
     ArrayList<Integer> abL;
     ArrayList<ListItem2> send;
+    ContentValues cot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub1);
+        cot=new ContentValues();
         abL=new ArrayList<>();
         send=new ArrayList<>();
         String name=getIntent().getExtras().getString("tv");
@@ -101,5 +108,25 @@ public class SubActivity1 extends AppCompatActivity {
         count=0;
         adapter2.status=new int[adapter2.listdata2.size()];
         Arrays.fill(adapter2.status,0);
+    }
+    public void submit(View view){
+        for(int i=0;i<abL.size();i++){
+            Log.d("Removed is ",(abL.get(i)-count)+"");
+            adapter2.listdata2.remove(abL.get(i)-count);
+            adapter2.notifyItemRemoved(abL.get(i)-count);
+            count++;
+        }
+        abL.clear();
+        count=0;
+        adapter2.status=new int[adapter2.listdata2.size()];
+        Arrays.fill(adapter2.status,0);
+        DatesList dates=new DatesList(this,1);
+        cot.put("Date",(new Date()).toString());
+        try {
+            long res=dates.execute(cot, adapter2.listdata2);
+            Toast.makeText(this, res+"", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

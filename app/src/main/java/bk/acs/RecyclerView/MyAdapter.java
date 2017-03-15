@@ -20,25 +20,27 @@ import bk.acs.SubActivity1;
  * Created by bk on 01-03-2017.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder>{
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder> {
     public List<ListItem> listdata;
     LayoutInflater inflater;
     Context c;
-    public MyAdapter(List<ListItem> list, Context c)
-    {
-        this.inflater=LayoutInflater.from(c);
-        listdata=list;
-        this.c=c;
+
+    public MyAdapter(List<ListItem> list, Context c) {
+        this.inflater = LayoutInflater.from(c);
+        listdata = list;
+        this.c = c;
     }
+
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view=inflater.inflate(R.layout.subjects_li,parent,false);
+        View view = inflater.inflate(R.layout.subjects_li, parent, false);
         return new Holder(view);
     }
+
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        ListItem item=listdata.get(position);
+        ListItem item = listdata.get(position);
         holder.subjectName.setText(item.subName);
         holder.serialNo.setText(item.sno);
     }
@@ -48,22 +50,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder>{
         return listdata.size();
     }
 
-    class Holder extends RecyclerView.ViewHolder implements View.OnClickListener
-    {
+    class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView subjectName;
         TextView serialNo;
         View container;
+
         public Holder(View itemView) {
             super(itemView);
-            subjectName=(TextView)itemView.findViewById(R.id.subjectTitle);
-            serialNo=(TextView)itemView.findViewById(R.id.sno);
-            container=itemView.findViewById(R.id.cont_root);
+            subjectName = (TextView) itemView.findViewById(R.id.subjectTitle);
+            serialNo = (TextView) itemView.findViewById(R.id.sno);
+            container = itemView.findViewById(R.id.cont_root);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            ((MainActivity)c).fetchDataForSub(subjectName.getText().toString());
+            ((MainActivity) c).fetchDataForSub(subjectName.getText().toString());
         }
     }
 

@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 import java.util.ArrayList;
+
 import bk.acs.AddingToDatabase.MyDialog;
 import bk.acs.databases.DatesList;
 
@@ -23,33 +25,35 @@ public class ViewDetails extends AppCompatActivity {
     Toolbar toolbar;
     NavigationDrawer drawer;
     ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_details);
-        ArrayList<String> arr=new ArrayList<>();
-        listView=(ListView)findViewById(R.id.listview);
+        ArrayList<String> arr = new ArrayList<>();
+        listView = (ListView) findViewById(R.id.listview);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        DatesList list=new DatesList(this,1);
-        SQLiteDatabase db=list.getReadableDatabase();
-        String cols[]={"Date"};
-        Cursor cursor=db.query("DatesTable",cols,null,null,null,null,null);
-        while (cursor.moveToNext()){
+        DatesList list = new DatesList(this, 1);
+        SQLiteDatabase db = list.getReadableDatabase();
+        String cols[] = {"Date"};
+        Cursor cursor = db.query("DatesTable", cols, null, null, null, null, null);
+        while (cursor.moveToNext()) {
             arr.add(cursor.getString(0));
         }
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.navDrawerRate);
         drawer.setUp((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arr);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arr);
         listView.setAdapter(adapter);
-        final ArrayList<String> arrInner=arr;
+        final ArrayList<String> arrInner = arr;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            final ArrayList<String> inner=new ArrayList<>();
+            final ArrayList<String> inner = new ArrayList<>();
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(ViewDetails.this,FinalDetails.class);
-                intent.putExtra("date",arrInner.get(i));
+                Intent intent = new Intent(ViewDetails.this, FinalDetails.class);
+                intent.putExtra("date", arrInner.get(i));
                 startActivity(intent);
             }
         });
@@ -61,6 +65,7 @@ public class ViewDetails extends AppCompatActivity {
         menuInflater.inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int res_id = item.getItemId();

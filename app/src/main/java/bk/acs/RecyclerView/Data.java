@@ -17,31 +17,29 @@ import bk.acs.databases.Main;
  */
 
 public class Data {
-    public static ArrayList<String> sample=new ArrayList<>();
-    public static List<ListItem> list=new ArrayList<>();
-    String[] cols={"SubjectName"};
+    public static ArrayList<String> sample = new ArrayList<>();
+    public static List<ListItem> list = new ArrayList<>();
+    String[] cols = {"SubjectName"};
     SQLiteDatabase db;
     Context ctx;
-    public Data(Context context)
-    {
-        this.ctx=context;
-        Main main=new Main(context,"subjects_db",1,1);
-        db=main.getReadableDatabase();
-        Cursor cursor=db.query("SubjectsTable",cols,null,null,null,null,null);
-        while(cursor.moveToNext())
-        {
+
+    public Data(Context context) {
+        this.ctx = context;
+        Main main = new Main(context, "subjects_db", 1, 1);
+        db = main.getReadableDatabase();
+        Cursor cursor = db.query("SubjectsTable", cols, null, null, null, null, null);
+        while (cursor.moveToNext()) {
             sample.add(cursor.getString(0));
         }
-        if(sample.size()!=0){
-            ((MainActivity)context).disableRecView();
+        if (sample.size() != 0) {
+            ((MainActivity) context).disableRecView();
         }
     }
-    public static List getList()
-    {
 
-        for(int i=0;i<sample.size();i++)
-        {
-            ListItem listItem=new ListItem(sample.get(i),(i+1)+""); //Fixed crash
+    public static List getList() {
+
+        for (int i = 0; i < sample.size(); i++) {
+            ListItem listItem = new ListItem(sample.get(i), (i + 1) + ""); //Fixed crash
             list.add(listItem);
         }
         return list;

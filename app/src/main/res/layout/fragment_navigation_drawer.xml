@@ -7,7 +7,6 @@
     tools:context="bk.acs.NavigationDrawer">
 
 
-
     <LinearLayout
         android:id="@+id/note"
         android:layout_width="match_parent"

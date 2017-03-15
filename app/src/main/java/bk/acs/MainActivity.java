@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationDrawer drawer;
     String appName;
     LinearLayout main;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyAdapter(d.getList(), this);
         recview.setLayoutManager(new LinearLayoutManager(recview.getContext()));
         recview.setAdapter(adapter);
-        main=(LinearLayout)findViewById(R.id.MainLayout);
+        main = (LinearLayout) findViewById(R.id.MainLayout);
         try {
             createFolders();
         } catch (Exception e) {
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void disableRecView() {
-        main=(LinearLayout)findViewById(R.id.MainLayout);
+        main = (LinearLayout) findViewById(R.id.MainLayout);
         main.setVisibility(View.GONE);
     }
 
@@ -95,20 +96,21 @@ public class MainActivity extends AppCompatActivity {
         File outputs = new File(mainFolder, "Outputs");
         if (mainFolder.exists()) {
             Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
-            File temp=new File(inputs,"temp.txt");
+            File temp = new File(inputs, "temp.txt");
             temp.createNewFile();
         } else {
             Toast.makeText(this, "Creating Folders", Toast.LENGTH_SHORT).show();
             mainFolder.mkdir();
             inputs.mkdir();
             outputs.mkdir();
-            File temp=new File(inputs,"temp.txt");
+            File temp = new File(inputs, "temp.txt");
             temp.createNewFile();
         }
     }
-    public void fetchDataForSub(String s){
-        Intent intent=new Intent(this,SubActivity1.class);
-        intent.putExtra("tv",s);
+
+    public void fetchDataForSub(String s) {
+        Intent intent = new Intent(this, SubActivity1.class);
+        intent.putExtra("tv", s);
         startActivity(intent);
     }
 }

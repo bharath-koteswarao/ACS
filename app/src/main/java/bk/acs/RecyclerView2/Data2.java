@@ -22,21 +22,22 @@ import bk.acs.databases.Main;
 
 public class Data2 {
     private Context context;
-    private String cols[]={"FileName"};
+    private String cols[] = {"FileName"};
     private SQLiteDatabase database;
-    private String subName,fileName;
-    public Data2(Context ctx,String subName)
-    {
-        context=ctx;
-        this.subName=subName;
-        String selArgs[]={subName};
-        Main db=new Main(context,"subjects_db",1,1);
-        database=db.getReadableDatabase();
-        Cursor cursor=database.query("SubjectsTable",cols,"SubjectName = ?",selArgs,null,null,null);
+    private String subName, fileName;
+
+    public Data2(Context ctx, String subName) {
+        context = ctx;
+        this.subName = subName;
+        String selArgs[] = {subName};
+        Main db = new Main(context, "subjects_db", 1, 1);
+        database = db.getReadableDatabase();
+        Cursor cursor = database.query("SubjectsTable", cols, "SubjectName = ?", selArgs, null, null, null);
         cursor.moveToNext();
-        fileName=cursor.getString(0);
+        fileName = cursor.getString(0);
     }
-    public String getFileName(){
+
+    public String getFileName() {
         return fileName;
     }
 }

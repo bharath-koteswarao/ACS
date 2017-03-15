@@ -21,7 +21,8 @@
         <activity android:name=".Note" />
         <activity android:name=".Help" />
         <activity android:name=".Settings" />
-        <activity android:name=".Rate"></activity>
+        <activity android:name=".ViewDetails" />
+        <activity android:name=".FinalDetails"></activity>
     </application>
 
 </manifest>

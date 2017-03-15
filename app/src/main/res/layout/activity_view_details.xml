@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="bk.acs.Rate">
+    tools:context="bk.acs.ViewDetails">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -19,11 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="COMING SOON..." />
+            android:id="@+id/listview">
+
+        </ListView>
 
         <fragment
             android:id="@+id/navDrawerRate"

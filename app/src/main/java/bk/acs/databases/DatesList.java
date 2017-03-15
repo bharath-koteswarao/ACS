@@ -39,7 +39,7 @@ public class DatesList extends SQLiteOpenHelper {
         for (int i=0;i<list.size();i++){
             data=data+list.get(i).regno+"\n";
         }
-        fos.write(data.getBytes());
+        fos.write(data.substring(4).getBytes());
         return getWritableDatabase().insert("DatesTable",null,values);
     }
 }

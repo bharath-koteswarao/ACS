@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -20,12 +21,10 @@ import bk.acs.databases.Main;
  */
 
 public class Data2 {
-    Context context;
-    public List<ListItem2> list=new ArrayList<>();
-    String cols[]={"FileName"};
-    SQLiteDatabase database;
-    int count;
-    String subName,fileName;
+    private Context context;
+    private String cols[]={"FileName"};
+    private SQLiteDatabase database;
+    private String subName,fileName;
     public Data2(Context ctx,String subName)
     {
         context=ctx;
@@ -37,11 +36,7 @@ public class Data2 {
         cursor.moveToNext();
         fileName=cursor.getString(0);
     }
-    public List getList() {
-        for(int i=500;i<561;i++)
-        {
-            list.add(new ListItem2("0"+i,0));
-        }
-        return list;
+    public String getFileName(){
+        return fileName;
     }
 }

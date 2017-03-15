@@ -17,11 +17,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import bk.acs.RecyclerView.ListItem;
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.ListItem2;
 import bk.acs.RecyclerView2.MyAdapter2;
@@ -41,13 +47,17 @@ public class SubActivity1 extends AppCompatActivity {
     RecyclerView recyclerView2;//,recyclerView3;
     //MyAdapter3 adapter3;
     String tag="See this";
+    int count=0;
+    int strength;
     MyAdapter2 adapter2;
-    List<ListItem2> copy;
-    boolean res;
+    ArrayList<Integer> abL;
+    ArrayList<ListItem2> send;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub1);
+        abL=new ArrayList<>();
+        send=new ArrayList<>();
         String name=getIntent().getExtras().getString("tv");
         subNameHeader=(TextView)findViewById(R.id.subNameHeader);
         presentCount=(TextView)findViewById(R.id.presentCount);
@@ -57,10 +67,22 @@ public class SubActivity1 extends AppCompatActivity {
         recyclerView2.setLayoutManager(new GridLayoutManager(recyclerView2.getContext(),6));
         //recyclerView3.setLayoutManager(new LinearLayoutManager(recyclerView3.getContext()));
         Data2 data2=new Data2(this,name);
-        Data3 data3=new Data3(this);
-        adapter2=new MyAdapter2(data2.getList(),this);
+        String path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath()+"/ATTENDANCE CSV/Inputs/"+data2.getFileName();
+        Toast.makeText(this, data2.getFileName()+" "+(new File(path)).exists()+"", Toast.LENGTH_SHORT).show();
+        try {
+            FileReader f=new FileReader(path);
+            BufferedReader br=new BufferedReader(f);
+            String line;
+            while((line=br.readLine())!=null){
+                send.add(new ListItem2(line.substring(5,line.length()),0));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        adapter2=new MyAdapter2(send,this);
         //adapter3=new MyAdapter3(data3.getList(),this);
-        presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
+        strength=adapter2.getItemCount();
+        absentCount.setText("ABSENT = "+adapter2.getItemCount()+"");
         //absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
         recyclerView2.setAdapter(adapter2);
         //recyclerView3.setAdapter(adapter3);
@@ -70,32 +92,31 @@ public class SubActivity1 extends AppCompatActivity {
         animator.setAddDuration(200);
         recyclerView2.setItemAnimator(animator);
     }
+    public void add(int position, int status){
+        if(!abL.contains(position)){
+            if(status==1){
+                abL.add(position);
+                Log.d("size is",abL.size()+"");
+            }
+        }
+        if(abL.contains(position)){
+            if(status==0){
+                abL.remove(abL.indexOf(position));
+                Log.d("Size is ",abL.size()+"");
+            }
+        }
+        Collections.sort(abL);
+    }
     public void createFile(View view) {
-        adapter2.listdata2=copy;
-        Log.d("Size is ",adapter2.listdata2.size()+"");
-        adapter2.notifyDataSetChanged();
-    }
-    public void submitAll(List<ListItem2> copy){
-        this.copy=copy;
-        Log.d("Size",copy.size()+"");
-    }
-    public void onClickForAbsent(int position, ListItem3 item3)
-    {
-//        adapter3.listdata3.remove(position);
-//        adapter3.notifyItemRemoved(position);
-//        adapter2.listdata2.add(adapter2.listdata2.size(),(new ListItem2(item3.regNo,1)));
-//        adapter2.notifyItemInserted(adapter2.listdata2.size());
-//        presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
-//        absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
-    }
-    public void onClickForPresent(int position, ListItem2 item2)
-    {
-//        adapter2.listdata2.remove(position);
-//        adapter2.notifyItemRemoved(position);
-//        adapter3.listdata3.add(new ListItem3(item2.regno));
-//        adapter3.notifyItemInserted(adapter3.listdata3.size());
-//        presentCount.setText("PRESENT = "+adapter2.getItemCount()+"");
-//        absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
-//        Log.d(tag,item2.color+"");
+        for(int i=0;i<abL.size();i++){
+            Log.d("Removed is ",(abL.get(i)-count)+"");
+            adapter2.listdata2.remove(abL.get(i)-count);
+            adapter2.notifyItemRemoved(abL.get(i)-count);
+            count++;
+        }
+        abL.clear();
+        count=0;
+        adapter2.status=new int[adapter2.listdata2.size()];
+        Arrays.fill(adapter2.status,0);
     }
 }

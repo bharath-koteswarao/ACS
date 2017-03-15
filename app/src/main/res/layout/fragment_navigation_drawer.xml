@@ -6,48 +6,7 @@
     android:orientation="vertical"
     tools:context="bk.acs.NavigationDrawer">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#fff"
-        android:orientation="vertical"
-        android:padding="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/circle"
-                android:gravity="center|top"
-                android:text="B"
-                android:textColor="@android:color/white"
-                android:textSize="80dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="BK"
-                android:textAlignment="center"
-                android:textColor="#FF006E"
-                android:textSize="25dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/black" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAccent" />
 
     <LinearLayout
         android:id="@+id/note"

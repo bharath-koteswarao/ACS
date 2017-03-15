@@ -43,13 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        Log.d("See this",Environment.getExternalStorageDirectory().getAbsolutePath());
-//        {
-//            File f=new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"BkFolder");
-//            File f2=new File(f,"Inputs");
-//            Log.d("Making f",f.mkdir()+"");
-//            Log.d("Making sub f",f2.mkdir()+"");
-//        }
         appName = getResources().getString(R.string.app_name);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

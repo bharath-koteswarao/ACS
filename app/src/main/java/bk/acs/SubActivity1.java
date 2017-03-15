@@ -18,18 +18,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
-
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.ListItem2;
 import bk.acs.RecyclerView2.MyAdapter2;
 import bk.acs.databases.DatesList;
-import bk.acs.databases.Main;
 
 public class SubActivity1 extends AppCompatActivity {
     TextView subNameHeader,presentCount,absentCount;
-    RecyclerView recyclerView2;//,recyclerView3;
-    //MyAdapter3 adapter3;
-    String tag="See this";
+    RecyclerView recyclerView2;
     int count=0,strength,pcount=0;
     MyAdapter2 adapter2;
     ArrayList<Integer> abL;
@@ -47,9 +43,7 @@ public class SubActivity1 extends AppCompatActivity {
         presentCount=(TextView)findViewById(R.id.presentCount);
         absentCount=(TextView)findViewById(R.id.absentCount);
         recyclerView2=(RecyclerView)findViewById(R.id.recview2);
-        //recyclerView3=(RecyclerView)findViewById(R.id.recview3) ;
         recyclerView2.setLayoutManager(new GridLayoutManager(recyclerView2.getContext(),6));
-        //recyclerView3.setLayoutManager(new LinearLayoutManager(recyclerView3.getContext()));
         Data2 data2=new Data2(this,name);
         String path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath()+"/ATTENDANCE CSV/Inputs/"+data2.getFileName();
         Toast.makeText(this, data2.getFileName()+" "+(new File(path)).exists()+"", Toast.LENGTH_SHORT).show();
@@ -64,12 +58,9 @@ public class SubActivity1 extends AppCompatActivity {
             e.printStackTrace();
         }
         adapter2=new MyAdapter2(send,this);
-        //adapter3=new MyAdapter3(data3.getList(),this);
         strength=adapter2.getItemCount();
         absentCount.setText("ABSENT = "+adapter2.getItemCount()+"");
-        //absentCount.setText("ABSENT = "+adapter3.getItemCount()+"");
         recyclerView2.setAdapter(adapter2);
-        //recyclerView3.setAdapter(adapter3);
         subNameHeader.setText(name);
         DefaultItemAnimator animator=new DefaultItemAnimator();
         animator.setRemoveDuration(200);

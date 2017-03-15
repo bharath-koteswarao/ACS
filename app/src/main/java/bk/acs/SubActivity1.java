@@ -1,54 +1,31 @@
 package bk.acs;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-
-import bk.acs.RecyclerView.ListItem;
 import bk.acs.RecyclerView2.Data2;
 import bk.acs.RecyclerView2.ListItem2;
 import bk.acs.RecyclerView2.MyAdapter2;
-import bk.acs.RecyclerView3.Data3;
-import bk.acs.RecyclerView3.ListItem3;
-import bk.acs.RecyclerView3.MyAdapter3;
-import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
-
-import static android.os.Environment.DIRECTORY_PICTURES;
-import static android.os.Environment.getExternalStorageDirectory;
-import static android.os.Environment.getExternalStoragePublicDirectory;
-import static bk.acs.R.styleable.View;
 
 public class SubActivity1 extends AppCompatActivity {
     TextView subNameHeader,presentCount,absentCount;
     RecyclerView recyclerView2;//,recyclerView3;
     //MyAdapter3 adapter3;
     String tag="See this";
-    int count=0;
-    int strength;
+    int count=0,strength,pcount=0;
     MyAdapter2 adapter2;
     ArrayList<Integer> abL;
     ArrayList<ListItem2> send;
@@ -96,14 +73,20 @@ public class SubActivity1 extends AppCompatActivity {
         if(!abL.contains(position)){
             if(status==1){
                 abL.add(position);
-                Log.d("size is",abL.size()+"");
+                pcount++;
+                strength--;
             }
+            presentCount.setText("PRESENT = "+pcount);
+            absentCount.setText("ABSENT = "+strength);
         }
         if(abL.contains(position)){
             if(status==0){
                 abL.remove(abL.indexOf(position));
-                Log.d("Size is ",abL.size()+"");
+                strength++;
+                pcount--;
             }
+            presentCount.setText("PRESENT = "+pcount);
+            absentCount.setText("ABSENT = "+strength);
         }
         Collections.sort(abL);
     }

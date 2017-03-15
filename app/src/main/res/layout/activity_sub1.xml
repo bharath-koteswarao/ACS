@@ -32,7 +32,7 @@
                 android:id="@+id/presentCount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="PRESENT = 10"
+                android:text="PRESENT = 0"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>

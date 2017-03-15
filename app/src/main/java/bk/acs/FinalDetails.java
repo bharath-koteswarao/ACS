@@ -26,7 +26,7 @@ public class FinalDetails extends Activity {
             FileReader reader=new FileReader(path);
             BufferedReader br=new BufferedReader(reader);
             while ((line=br.readLine())!=null){
-                arr2.add(line);
+                arr2.add("15BEC"+line);
             }
         }
         catch (Exception e){}

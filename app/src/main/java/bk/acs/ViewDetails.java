@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,8 +50,6 @@ public class ViewDetails extends AppCompatActivity {
         listView.setAdapter(adapter);
         final ArrayList<String> arrInner = arr;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            final ArrayList<String> inner = new ArrayList<>();
-
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ViewDetails.this, FinalDetails.class);
@@ -57,8 +57,24 @@ public class ViewDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        registerForContextMenu(listView);
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu,v,menuInfo);
+        menu.setHeaderTitle("Click to delete");
+        menu.add(0,v.getId(),0,"Delete");
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        if(item.getTitle()=="Delete")
+        {
 
+        }
+        return true;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

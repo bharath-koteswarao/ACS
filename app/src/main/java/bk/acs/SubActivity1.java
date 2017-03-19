@@ -48,14 +48,15 @@ public class SubActivity1 extends AppCompatActivity {
         recyclerView2 = (RecyclerView) findViewById(R.id.recview2);
         recyclerView2.setLayoutManager(new GridLayoutManager(recyclerView2.getContext(), 6));
         Data2 data2 = new Data2(this, name);
-        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath() + "/ATTENDANCE CSV/Inputs/" + data2.getFileName();
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath()+"/"+getResources().getString(R.string.app_name)+"/Inputs/" + data2.getFileName();
         Toast.makeText(this, data2.getFileName() + " " + (new File(path)).exists() + "", Toast.LENGTH_SHORT).show();
         try {
+            Log.d("See this","came here");
             FileReader f = new FileReader(path);
             BufferedReader br = new BufferedReader(f);
             String line;
             while ((line = br.readLine()) != null) {
-                send.add(new ListItem2(line.substring(5, line.length()), 0));
+                send.add(new ListItem2(line.substring(5, line.length()),0));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +94,7 @@ public class SubActivity1 extends AppCompatActivity {
         Collections.sort(abL);
     }
 
-    public void createFile(View view) {
+    public void refresh(View view) {
         for (int i = 0; i < abL.size(); i++) {
             Log.d("Removed is ", (abL.get(i) - count) + "");
             adapter2.listdata2.remove(abL.get(i) - count);

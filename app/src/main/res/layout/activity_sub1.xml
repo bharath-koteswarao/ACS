@@ -88,7 +88,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"
             android:layout_weight="0.5"
-            android:onClick="createFile"
+            android:onClick="refresh"
             android:text="REFRESH"
             android:textColor="@android:color/white" />
         <Button

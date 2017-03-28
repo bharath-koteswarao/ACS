@@ -11,16 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NavigationDrawer extends Fragment {
-    LinearLayout note, help, settings, rate, home;
+    LinearLayout note, help, settings, rate;
     ActionBarDrawerToggle drawertoggle;
     DrawerLayout drawerlayout;
-
     public NavigationDrawer() {
     }
 
@@ -28,11 +28,13 @@ public class NavigationDrawer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         note = (LinearLayout) v.findViewById(R.id.note);
         help = (LinearLayout) v.findViewById(R.id.help);
         settings = (LinearLayout) v.findViewById(R.id.settings);
+        note.setVisibility(View.GONE);
+        settings.setVisibility(View.GONE);
+        help.setVisibility(View.GONE);
         rate = (LinearLayout) v.findViewById(R.id.rate);
         return v;
     }

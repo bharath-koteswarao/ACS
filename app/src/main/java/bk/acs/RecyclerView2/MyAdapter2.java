@@ -33,8 +33,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.Holder> {
         this.listdata2 = listdata;
         c = ctx;
         this.layoutInflater = LayoutInflater.from(c);
-        status = new int[listdata.size()];
-        Arrays.fill(status, 0);
     }
 
     @Override

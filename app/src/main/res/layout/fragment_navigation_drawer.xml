@@ -92,8 +92,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:id="@+id/lineText"
         android:background="@color/colorAccent" />
-
     <LinearLayout
         android:id="@+id/rate"
         android:layout_width="match_parent"
@@ -113,7 +113,7 @@
             android:layout_weight="0.8"
             android:gravity="left|center"
             android:paddingLeft="20dp"
-            android:text="VIEW DETAILS"
+            android:text="VIEW LOG DETAILS"
             android:textColor="@color/colorAccent"
             android:textSize="15dp" />
     </LinearLayout>

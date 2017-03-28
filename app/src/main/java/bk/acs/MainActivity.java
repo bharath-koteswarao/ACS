@@ -1,8 +1,10 @@
 package bk.acs;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,13 +15,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import bk.acs.AddingToDatabase.MyDialog;
@@ -27,10 +26,8 @@ import bk.acs.RecyclerView.Data;
 import bk.acs.RecyclerView.ListItem;
 import bk.acs.RecyclerView.MyAdapter;
 
-import static android.os.Environment.DIRECTORY_DOCUMENTS;
-import static android.os.Environment.getExternalStoragePublicDirectory;
-
 public class MainActivity extends AppCompatActivity {
+    private static final int CONTACTS_PERMISSION = 10;
     RecyclerView recview;
     MyAdapter adapter;
     Data d;
@@ -47,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
         appName = getResources().getString(R.string.app_name);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        d = new Data(this);
         recview = (RecyclerView) findViewById(R.id.recview);
         drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.navDrawer);
         drawer.setUp((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
-        adapter = new MyAdapter(d.getList(), this);
+        d = new Data(this);
+        adapter = new MyAdapter(Data.getList(), this);
         recview.setLayoutManager(new LinearLayoutManager(recview.getContext()));
         recview.setAdapter(adapter);
         main = (LinearLayout) findViewById(R.id.MainLayout);
@@ -61,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -113,4 +109,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("tv", s);
         startActivity(intent);
     }
+
 }

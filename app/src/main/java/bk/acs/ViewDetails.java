@@ -27,12 +27,13 @@ public class ViewDetails extends AppCompatActivity {
     Toolbar toolbar;
     NavigationDrawer drawer;
     ListView listView;
-
+    ArrayAdapter<String> adapter;
+    ArrayList<String> arr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_details);
-        ArrayList<String> arr = new ArrayList<>();
+        arr = new ArrayList<>();
         listView = (ListView) findViewById(R.id.listview);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         DatesList list = new DatesList(this, 1);
@@ -46,7 +47,7 @@ public class ViewDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         drawer = (NavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.navDrawerRate);
         drawer.setUp((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arr);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arr);
         listView.setAdapter(adapter);
         final ArrayList<String> arrInner = arr;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,6 +59,16 @@ public class ViewDetails extends AppCompatActivity {
             }
         });
         registerForContextMenu(listView);
+    }
+    void delete()
+    {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ViewDetails.this, i+"", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
@@ -71,7 +82,7 @@ public class ViewDetails extends AppCompatActivity {
     {
         if(item.getTitle()=="Delete")
         {
-
+            delete();
         }
         return true;
     }
